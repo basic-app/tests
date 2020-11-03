@@ -6,6 +6,8 @@
  */
 namespace BasicApp\Test\Models;
 
+use BasicApp\Test\Entities\Test;
+
 class TestModel extends \CodeIgniter\Model
 {
 
@@ -13,6 +15,21 @@ class TestModel extends \CodeIgniter\Model
 
     protected $primaryKey = 'id';
 
-    protected $returnType = \BasicApp\Test\Entities\Test::class; 
+    protected $returnType = Test::class; 
+
+    protected $validationRules = [
+        'id' => [
+            'label' => 'ID'
+        ],
+        'created' => [
+            'label' => 'Created'
+        ],
+        'parent_id' => [
+            'label' => 'Parent ID'
+        ],
+        'name' => [
+            'label' => 'Name'
+        ]
+    ];
 
 }

@@ -2,7 +2,7 @@
 
 ## Testing
 
-php spark migrate -all
+php spark migrate -g test -all
 php spark db:seed BasicApp\Test\Database\Seeds\TruncateTestSeeder
 php spark db:seed BasicApp\Test\Database\Seeds\TestSeeder
-./vendor/bin/phpunit vendor/basic-app/test/tests
+./vendor/bin/phpunit vendor/basic-app/test/tests (Linux) or vendor\bin\phpunit vendor/basic-app/test/tests (Windows)
