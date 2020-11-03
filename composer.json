@@ -1,0 +1,12 @@
+{
+    "name": "basic-app/test",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "BasicApp\\Test\\": ""
+        }
+    },
+    "require": {
+        "basic-app/crud": "*"
+    }
+}
