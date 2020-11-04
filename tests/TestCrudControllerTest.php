@@ -63,4 +63,46 @@ class TestCrudControllerTest extends \BasicApp\Test\ControllerTestCase
         $this->assertTrue($result->see('Record #3', 'td'));
     }
 
+    public function testCreate()
+    {
+        $request = $this->createRequest()
+            ->setGlobal('get', ['parentId' => '2'])
+            ->setGlobal('post', [
+                'name' => 'Record #4'
+            ]);
+
+        $result = $this->withRequest($request)
+            ->controller(\BasicApp\Test\Controllers\TestCrud::class)
+            ->execute('create');
+
+        $this->assertTrue($result->isRedirect(), 'Response is not redirect.');
+
+        $entity = model(TestModel::class)->find(4);
+
+        $this->assertTrue($entity ? true : false, 'Entity not found.');
+
+        $this->assertEquals($entity->name, 'Record #4', 'Entity name incorrect.');
+    }
+
+    public function testUpdate()
+    {
+        $request = $this->createRequest()
+            ->setGlobal('get', ['id' => '4'])
+            ->setGlobal('post', [
+                'name' => 'Record #4 Updated'
+            ]);
+
+        $result = $this->withRequest($request)
+            ->controller(\BasicApp\Test\Controllers\TestCrud::class)
+            ->execute('update');
+
+        $this->assertTrue($result->isRedirect(), 'Response is not redirect.');
+
+        $entity = model(TestModel::class)->find(4);
+
+        $this->assertTrue($entity ? true : false, 'Entity not found.');
+
+        $this->assertEquals($entity->name, 'Record #4 Updated', 'Entity name incorrect.');
+    }
+
 }
