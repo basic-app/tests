@@ -1,5 +1,7 @@
 <?php
 
+use BasicApp\Test\Models\TestModel;
+
 class TestCrudControllerTest extends \BasicApp\Test\ControllerTestCase
 {
 
