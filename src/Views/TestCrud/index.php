@@ -39,6 +39,9 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
             <th><?= $searchModel->validationRules['created']['label'];?></th>
             <th><?= $searchModel->validationRules['parent_id']['label'];?></th>
             <th><?= $searchModel->validationRules['name']['label'];?></th>
+            <th></th>
+            <th></th>
+            <th></th>
             
         </tr>
 
@@ -67,6 +70,12 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
                 <td data-field="parent_id"><?= $row->parent_id;?></td>
                 
                 <td data-field="name"><?= $row->name;?></td>
+
+                <td><a href="<?= site_url('test/crud/view');?>?id=<?= $row->id;?>">View</a></td>
+
+                <td><a href="<?= site_url('test/crud/update');?>?id=<?= $row->id;?>">Update</a></td>
+
+                <td><a href="<?= site_url('test/crud/delete');?>?id=<?= $row->id;?>">Delete</a></td>
 
             </tr>
 
