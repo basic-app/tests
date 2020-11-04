@@ -8,7 +8,7 @@ helper(['form']);
 
 ?>
 
-<h1>index</h1>
+<h1>Index</h1>
 
 <?php
 

@@ -5,4 +5,4 @@
  * @link https://basic-app.com
  */
 ?>
-<h1>create</h1>
+<h1>Create</h1>

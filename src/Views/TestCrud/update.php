@@ -5,4 +5,4 @@
  * @link https://basic-app.com
  */
 ?>
-<h1>update</h1>
+<h1>Update</h1>
