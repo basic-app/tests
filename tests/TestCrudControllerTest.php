@@ -105,4 +105,23 @@ class TestCrudControllerTest extends \BasicApp\Test\ControllerTestCase
         $this->assertEquals($entity->name, 'Record #4 Updated', 'Entity name incorrect.');
     }
 
+    public function testDelete()
+    {
+        $entity = model(TestModel::class)->find(4);
+
+        $this->assertTrue($entity ? true : false, 'Entity not found.');
+
+        $request = $this->createRequest()->setGlobal('get', ['id' => '4']);
+
+        $result = $this->withRequest($request)
+            ->controller(\BasicApp\Test\Controllers\TestCrud::class)
+            ->execute('delete');
+
+        $this->assertTrue($result->isRedirect(), 'Response is not redirect.');
+
+        $entity = model(TestModel::class)->find(4);
+
+        $this->assertFalse($entity ? true : false, 'Entity exists.');
+    }
+
 }
