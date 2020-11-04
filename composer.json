@@ -7,6 +7,8 @@
         }
     },
     "require": {
+        "basic-app/model": "*",
+        "basic-app/entity": "*",
         "basic-app/crud": "*",
         "basic-app/migration": "*"
     }

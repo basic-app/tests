@@ -8,4 +8,12 @@ namespace BasicApp\Test\Forms;
 
 class TestForm extends \BasicApp\Test\Models\TestModel
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->validationRules['name']['rules'] .= '|required';
+    }
+
 }

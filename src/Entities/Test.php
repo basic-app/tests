@@ -6,6 +6,6 @@
  */
 namespace BasicApp\Test\Entities;
 
-class Test extends \CodeIgniter\Entity
+class Test extends \BasicApp\Entity\BaseEntity
 {
 }

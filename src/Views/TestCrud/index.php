@@ -29,6 +29,8 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
 
 ?>
 
+<a href="<?= site_url('test/crud/create');?>">Create</a>
+
 <table>
 
     <thead>

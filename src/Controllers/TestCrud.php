@@ -7,6 +7,7 @@
 namespace BasicApp\Test\Controllers;
 
 use BasicApp\Test\Forms\TestForm;
+use BasicApp\Test\Models\TestModel;
 use BasicApp\Test\Models\Search\TestSearchModel;
 
 class TestCrud extends \BasicApp\Crud\CrudController
@@ -14,13 +15,17 @@ class TestCrud extends \BasicApp\Crud\CrudController
 
     protected $viewsNamespace = 'BasicApp\Test\Views\TestCrud';
 
-    protected $modelClass = TestForm::class;
+    protected $modelClass = TestModel::class;
+
+    protected $formModelClass = TestForm::class;
 
     protected $searchModelClass = TestSearchModel::class;
 
     protected $parentKey = 'parent_id';
 
     protected $perPage = 1;
+
+    protected $backUrl = '/test/crud';
 
     public function index()
     {
