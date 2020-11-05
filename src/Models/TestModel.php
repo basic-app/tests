@@ -15,6 +15,8 @@ class TestModel extends \BasicApp\Model\BaseModel
 
     protected $primaryKey = 'id';
 
+    protected $parentKey = 'parent_id';
+
     protected $returnType = Test::class; 
 
     protected $allowedFields = [
@@ -27,7 +29,7 @@ class TestModel extends \BasicApp\Model\BaseModel
             'label' => 'ID',
             'rules' => 'permit_empty'
         ],
-        'created' => [
+        'created_at' => [
             'label' => 'Created',
             'rules' => 'permit_empty'
         ],

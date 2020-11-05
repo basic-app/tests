@@ -7,16 +7,15 @@
 helper(['form']);
 
 ?>
-
 <h1>Index</h1>
 
 <?php
 
 echo form_open('', ['method' => 'GET']);
 
-echo form_input('id', (string) $search->id, ['placeholder' => 'ID']);
+echo form_input('id', (string) $search['id'], ['placeholder' => 'ID']);
 
-echo form_input('name', (string) $search->name, ['placeholder' => 'Name']);
+echo form_input('name', (string) $search['name'], ['placeholder' => 'Name']);
 
 echo form_submit(null, 'Search');
 
@@ -29,7 +28,7 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
 
 ?>
 
-<a href="<?= site_url('test/crud/create');?>">Create</a>
+<a href="<?= site_url('test/array-crud/create');?>">Create</a>
 
 <table>
 
@@ -38,7 +37,7 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
         <tr>
 
             <th><?= $searchModel->validationRules['id']['label'];?></th>
-            <th><?= $searchModel->validationRules['created']['label'];?></th>
+            <th><?= $searchModel->validationRules['created_at']['label'];?></th>
             <th><?= $searchModel->validationRules['parent_id']['label'];?></th>
             <th><?= $searchModel->validationRules['name']['label'];?></th>
             <th></th>
@@ -63,21 +62,21 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
 
         <?php foreach($elements as $row):?>
 
-            <tr data-id="<?= $row->id;?>">
+            <tr data-id="<?= $row['id'];?>">
 
-                <td data-field="id"><?= $row->id;?></td>
+                <td data-field="id"><?= $row['id'];?></td>
                 
-                <td data-field="created"><?= $row->created;?></td>
+                <td data-field="created_at"><?= $row['created_at'];?></td>
                 
-                <td data-field="parent_id"><?= $row->parent_id;?></td>
+                <td data-field="parent_id"><?= $row['parent_id'];?></td>
                 
-                <td data-field="name"><?= $row->name;?></td>
+                <td data-field="name"><?= $row['name'];?></td>
 
-                <td><a href="<?= site_url('test/crud/view');?>?id=<?= $row->id;?>">View</a></td>
+                <td><a href="<?= site_url('test/array-crud/view');?>?id=<?= $row['id'];?>">View</a></td>
 
-                <td><a href="<?= site_url('test/crud/update');?>?id=<?= $row->id;?>">Update</a></td>
+                <td><a href="<?= site_url('test/array-crud/update');?>?id=<?= $row['id'];?>">Update</a></td>
 
-                <td><a href="<?= site_url('test/crud/delete');?>?id=<?= $row->id;?>">Delete</a></td>
+                <td><a href="<?= site_url('test/array-crud/delete');?>?id=<?= $row['id'];?>">Delete</a></td>
 
             </tr>
 

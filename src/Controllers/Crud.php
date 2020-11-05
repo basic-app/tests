@@ -10,10 +10,10 @@ use BasicApp\Test\Forms\TestForm;
 use BasicApp\Test\Models\TestModel;
 use BasicApp\Test\Models\Search\TestSearchModel;
 
-class TestCrud extends \BasicApp\Crud\CrudController
+class Crud extends \BasicApp\Crud\CrudController
 {
 
-    protected $viewsNamespace = 'BasicApp\Test\Views\TestCrud';
+    protected $viewsNamespace = 'BasicApp\Test\Views\Crud';
 
     protected $modelClass = TestModel::class;
 
