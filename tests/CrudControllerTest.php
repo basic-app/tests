@@ -90,12 +90,28 @@ class CrudControllerTest extends \BasicApp\Test\ControllerTestCase
         $this->assertEquals($entity->parent_id, 2, 'parent_id');
     }
 
+    public function testCreateRequired()
+    {
+        $request = $this->createRequest()
+            ->setGlobal('post', [
+                'test' => 'Test'
+            ]);
+
+        $result = $this->withRequest($request)
+            ->controller($this->controllerClass)
+            ->execute('create');
+    
+        $this->assertTrue($result->see('The Name field is required.', 'div'));
+    }
+
     public function testUpdate()
     {
         $request = $this->createRequest()
             ->setGlobal('get', ['id' => '2'])
-            ->setGlobal('post', [csrf_token() => csrf_hash(), 
-                'name' => 'Record #2 Updated'
+            ->setGlobal('post', [
+                $this->csrfToken => $this->csrfHash,
+                'name' => 'Record #2 Updated',
+                'created' => date('2020-01-01 00:00:00')
             ]);
 
         $result = $this->withRequest($request)
@@ -108,10 +124,36 @@ class CrudControllerTest extends \BasicApp\Test\ControllerTestCase
 
         $this->assertTrue($entity ? true : false, 'Entity not found.');
 
-        $this->assertEquals($entity->name, 'Record #2 Updated', 'Entity name incorrect.');
+        $this->assertEquals($entity->name, 'Record #2 Updated', 'name');
+
+        $this->assertNotEquals($entity->created, '2020-01-01 00:00:00', 'created');
     }
 
     public function testDelete()
+    {
+        $model = model(TestModel::class);
+
+        $entity = $model->find(2);
+
+        $this->assertTrue($entity ? true : false, 'Entity not found.');
+
+        $request = $this->createRequest()->setGlobal('get', [
+            $this->csrfToken => $this->csrfHash,
+            'id' => '2'
+        ]);
+
+        $result = $this->withRequest($request)
+            ->controller($this->controllerClass)
+            ->execute('delete');
+
+        $this->assertTrue($result->isRedirect(), 'Response is not redirect.');
+
+        $entity = model(TestModel::class)->find(2);
+
+        $this->assertFalse($entity ? true : false, 'Entity exists.');
+    }    
+
+    public function testDeleteCsrf()
     {
         $model = model(TestModel::class);
 
@@ -125,11 +167,7 @@ class CrudControllerTest extends \BasicApp\Test\ControllerTestCase
             ->controller($this->controllerClass)
             ->execute('delete');
 
-        $this->assertTrue($result->isRedirect(), 'Response is not redirect.');
-
-        $entity = model(TestModel::class)->find(2);
-
-        $this->assertFalse($entity ? true : false, 'Entity exists.');
+        $this->assertEquals($result->response()->getStatusCode(), 403);
     }
 
 }

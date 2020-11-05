@@ -22,6 +22,19 @@ class ControllerTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
 
     protected $namespace = 'BasicApp\Test';
 
+    protected $csrfToken;
+
+    protected $csrfHash;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->csrfToken = $this->getCsrfToken();
+
+        $this->csrfHash = $this->getCsrfHash();
+    }
+
     protected function createRequest($appConfig = null, ?URI $uri = null, $input = 'php://input', ?UserAgent $userAgent = null)
     {
         if (!$appConfig)
@@ -49,4 +62,14 @@ class ControllerTestCase extends \CodeIgniter\Test\CIDatabaseTestCase
         return new IncomingRequest($appConfig, $uri, $input, $userAgent);
     }
 
+    public function getCsrfToken()
+    {
+        return csrf_token();
+    }
+
+    public function getCsrfHash()
+    {
+        return csrf_hash();
+    }
+    
 }

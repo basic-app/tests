@@ -2,7 +2,7 @@
 
 require __DIR__ . '/CrudControllerTest.php';
 
-class ArrayControllerTest extends CrudControllerTest
+class ArrayCrudControllerTest extends CrudControllerTest
 {
 
     protected $controllerClass = \BasicApp\Test\Controllers\ArrayCrud::class;

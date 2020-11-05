@@ -29,7 +29,7 @@ class TestModel extends \BasicApp\Model\BaseModel
             'label' => 'ID',
             'rules' => 'permit_empty'
         ],
-        'created_at' => [
+        'created' => [
             'label' => 'Created',
             'rules' => 'permit_empty'
         ],

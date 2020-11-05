@@ -37,7 +37,7 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
         <tr>
 
             <th><?= $searchModel->validationRules['id']['label'];?></th>
-            <th><?= $searchModel->validationRules['created_at']['label'];?></th>
+            <th><?= $searchModel->validationRules['created']['label'];?></th>
             <th><?= $searchModel->validationRules['parent_id']['label'];?></th>
             <th><?= $searchModel->validationRules['name']['label'];?></th>
             <th></th>
@@ -66,7 +66,7 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
 
                 <td data-field="id"><?= $row['id'];?></td>
                 
-                <td data-field="created_at"><?= $row['created_at'];?></td>
+                <td data-field="created"><?= $row['created'];?></td>
                 
                 <td data-field="parent_id"><?= $row['parent_id'];?></td>
                 
@@ -76,7 +76,7 @@ foreach(array_merge($searchErrors, $searchCustomErrors) as $error)
 
                 <td><a href="<?= site_url('test/array-crud/update');?>?id=<?= $row['id'];?>">Update</a></td>
 
-                <td><a href="<?= site_url('test/array-crud/delete');?>?id=<?= $row['id'];?>">Delete</a></td>
+                <td><a href="<?= site_url('test/array-crud/delete');?>?id=<?= $row['id'];?>&<?= csrf_token();?>=<?= csrf_hash();?>">Delete</a></td>
 
             </tr>
 

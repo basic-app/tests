@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <th>Created</th>
-            <td><?= $entity['created_at'];?></td>
+            <td><?= $entity['created'];?></td>
         </tr>
         <tr>
             <th>Name</th>

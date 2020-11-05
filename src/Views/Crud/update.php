@@ -24,4 +24,4 @@ foreach(array_merge($errors, $customErrors) as $error)
     echo '<div class="error">'  . $error . '</div>';
 }
 
-?>
+print_r(service('request')->getPost());
