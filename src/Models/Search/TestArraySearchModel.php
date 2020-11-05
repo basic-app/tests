@@ -6,7 +6,7 @@
  */
 namespace BasicApp\Test\Models\Search;
 
-class ArraySearchModel extends TestSearchModel
+class TestArraySearchModel extends TestSearchModel
 {
 
     protected $returnType = 'array';

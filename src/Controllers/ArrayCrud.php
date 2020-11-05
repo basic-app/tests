@@ -6,20 +6,20 @@
  */
 namespace BasicApp\Test\Controllers;
 
-use BasicApp\Test\Forms\ArrayForm;
-use BasicApp\Test\Models\ArrayModel;
-use BasicApp\Test\Models\Search\ArraySearchModel;
+use BasicApp\Test\Forms\TestArrayForm;
+use BasicApp\Test\Models\TestArrayModel;
+use BasicApp\Test\Models\Search\TestArraySearchModel;
 
 class ArrayCrud extends \BasicApp\Crud\CrudController
 {
 
     protected $viewsNamespace = 'BasicApp\Test\Views\ArrayCrud';
 
-    protected $modelClass = ArrayModel::class;
+    protected $modelClass = TestArrayModel::class;
 
-    protected $formModelClass = ArrayForm::class;
+    protected $formModelClass = TestArrayForm::class;
 
-    protected $searchModelClass = ArraySearchModel::class;
+    protected $searchModelClass = TestArraySearchModel::class;
 
     protected $parentKey = 'parent_id';
 

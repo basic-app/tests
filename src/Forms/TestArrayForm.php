@@ -4,11 +4,11 @@
  * @license MIT
  * @link https://basic-app.com
  */
-namespace BasicApp\Test\Models;
+namespace BasicApp\Test\Forms;
 
-class ArrayModel extends TestModel
+class TestArrayForm extends TestForm
 {
 
     protected $returnType = 'array';
-    
+
 }

@@ -81,7 +81,7 @@ class CrudControllerTest extends \BasicApp\Test\ControllerTestCase
 
         $this->assertTrue($result->isRedirect(), 'Response not redirect.');
 
-        $entity = model(TestModel::class)->find(4);
+        $entity = model(TestModel::class, false)->find(4);
 
         $this->assertTrue($entity ? true : false, 'Entity not found.');
 
@@ -120,7 +120,7 @@ class CrudControllerTest extends \BasicApp\Test\ControllerTestCase
 
         $this->assertTrue($result->isRedirect(), 'Response is not redirect.');
 
-        $entity = model(TestModel::class)->find(2);
+        $entity = model(TestModel::class, false)->find(2);
 
         $this->assertTrue($entity ? true : false, 'Entity not found.');
 
@@ -131,7 +131,7 @@ class CrudControllerTest extends \BasicApp\Test\ControllerTestCase
 
     public function testDelete()
     {
-        $model = model(TestModel::class);
+        $model = model(TestModel::class, false);
 
         $entity = $model->find(2);
 
@@ -148,14 +148,14 @@ class CrudControllerTest extends \BasicApp\Test\ControllerTestCase
 
         $this->assertTrue($result->isRedirect(), 'Response is not redirect.');
 
-        $entity = model(TestModel::class)->find(2);
+        $entity = model(TestModel::class, false)->find(2);
 
         $this->assertFalse($entity ? true : false, 'Entity exists.');
     }    
 
     public function testDeleteCsrf()
     {
-        $model = model(TestModel::class);
+        $model = model(TestModel::class, false);
 
         $entity = $model->find(2);
 
